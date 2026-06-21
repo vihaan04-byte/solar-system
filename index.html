@@ -253,6 +253,20 @@
     </div>
 
     <div id="galaxyOverlay">
+       <button id="galaxyBackBtn" style="
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          z-index: 60;
+          padding: 10px 20px;
+          background: rgba(255,255,255,0.1);
+          color: white;
+          border: 1px solid rgba(255,255,255,0.3);
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 14px;
+          backdrop-filter: blur(6px);
+    ">← Back</button>
         <div id="solarMarker">
             <div class="ring2"></div>
             <div class="ring"></div>
@@ -517,6 +531,16 @@
         }, 1200);
     }
     });
+
+      document.getElementById('galaxyBackBtn').addEventListener('click', () => {
+        galaxyView = false;
+        galaxyBtn.textContent = '🌌 Galaxy View';
+        galaxyOverlay.classList.remove('visible');
+        setTimeout(() => {
+          galaxyOverlay.style.display = 'none';
+          controls.enabled = true;
+        }, 1200);
+      });
 
     document.getElementById('closeCard').addEventListener('click', () => {
       infoCard.style.display = 'none';
